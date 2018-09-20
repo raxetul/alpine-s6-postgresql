@@ -1,4 +1,6 @@
-FROM rpi-alpine-s6-base
+ARG TAG=amd64
+FROM raxetul/alpine-s6-base:$TAG
+
 MAINTAINER Emrah URHAN <raxetul@gmail.com>
 
 RUN apk update && apk add --no-cache \
