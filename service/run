@@ -1,0 +1,10 @@
+#!/bin/sh
+export USER=postgres
+exec 2>&1 # pipe stderr to stdout
+echo "STARTED SERVICE: postgresql-service"
+## Add your service task command below
+## Call your service with exec command
+mkdir -p /user-cert
+cp /cert/* /user-cert
+chown $USER:$USER -R /user-cert
+su - $USER -c "exec postgres -D /data > /log/postresql.log 2>&1"
